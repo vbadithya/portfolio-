@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REWALL - Website Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === Global Styles === */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* === Header & Navigation === */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* === Hero Section === */
+        #home {
+            margin-top: 80px;
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://reenly.com/work/en-us/freenly/html/rewall/mg/portfolio/3.jpg') no-repeat center center/cover;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* === About Section === */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        .profile-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        /* === Education Section === */
+        #education {
+            background-color: var(--light-color);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* === Projects Section === */
+        #projects {
+            background-color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .project-links a {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .project-links a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* === Skills Section === */
+        #skills {
+            background-color: var(--light-color);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .skill-item {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .skill-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* === Achievements Section === */
+        #achievements {
+            background-color: white;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .achievement-card {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* === Certifications Section === */
+        #certifications {
+            background-color: var(--light-color);
+        }
+        
+        .certifications-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+        
+        .certification-item {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .certification-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certification-item h3 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .certification-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* === Contact Section === */
+        #contact {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        #contact h2 {
+            color: white;
+        }
+        
+        #contact h2::after {
+            background-color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        /* === Footer === */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* === Edit Controls === */
+        .edit-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .edit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .edit-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+        
+        .edit-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            z-index: 100;
+            width: 300px;
+            display: none;
+        }
+        
+        .edit-panel.active {
+            display: block;
+        }
+        
+        .edit-panel h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+        }
+        
+        .edit-panel input,
+        .edit-panel textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .edit-panel textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .edit-panel .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .edit-panel button {
+            flex: 1;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .edit-panel .save-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .edit-panel .cancel-btn {
+            background: #ddd;
+            color: #333;
+        }
+        
+        .image-upload {
+            position: relative;
+            margin: 10px 0;
+        }
+        
+        .image-upload input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .image-upload-label {
+            display: block;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px dashed #ddd;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .image-upload-label:hover {
+            background: #e9e9e9;
+        }
+        
+        /* === Add Item Button === */
+        .add-item-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-item-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* === Delete Button === */
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+        
+        .project-card:hover .delete-btn,
+        .timeline-item:hover .delete-btn,
+        .achievement-card:hover .delete-btn,
+        .certification-item:hover .delete-btn,
+        .skill-item:hover .delete-btn {
+            opacity: 1;
+        }
+        
+        /* === Admin Mode === */
+        .admin-mode {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            background: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 0 5px 5px 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .download-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px; /* Space from toggle button */
+        }
+        
+        /* === Responsive Design === */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                max-width: 400px;
+                margin-bottom: 30px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .edit-panel {
+                width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .admin-mode {
+                top: 60px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 40px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .edit-panel {
+                width: calc(100% - 40px);
+                right: 10px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-mode">
+        <span>Admin Mode: <span id="admin-status">OFF</span></span>
+        <button class="admin-toggle" id="admin-toggle">Toggle</button>
+        <button class="download-btn" id="download-html" style="display: none;">Download HTML</button>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PORTFOLIO</div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="home"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="hero-content">
+            <h1 contenteditable="false">WEBSITE DEVELOPER</h1>
+            <p contenteditable="false">Founder of Frenify. Professional UI/UX designer and web developer based on London. Sometimes works as a freelancer.</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+        
+        <div class="edit-panel" id="home-edit-panel">
+            <h3>Edit Home Content</h3>
+            <input type="text" id="home-title" placeholder="Title">
+            <textarea id="home-description" placeholder="Description"></textarea>
+            <div class="btn-group">
+                <button class="save-btn" data-section="home">Save</button>
+                <button class="cancel-btn" data-section="home">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="about"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="profile-img">
+                    <img src="https://reenly.com/work/en-us/freenly/html/rewall/mg/portfolio/3.jpg" alt="Profile Photo" id="profile-image">
+                    <div class="image-upload">
+                        <input type="file" id="profile-image-upload" accept="image/*">
+                        <label for="profile-image-upload" class="image-upload-label" style="display: none;">
+                            <i class="fas fa-camera"></i> Change Photo
+                        </label>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3 contenteditable="false">Hi, I'm Rewall</h3>
+                    <p contenteditable="false">I'm a passionate web developer and UI/UX designer with over 5 years of experience creating beautiful, functional websites and applications. My journey in tech started when I was just a teenager, and I've been hooked ever since.</p>
+                    <p contenteditable="false">I specialize in front-end development with a focus on responsive design and user experience. My goal is to create digital products that not only look great but also provide seamless experiences for users.</p>
+                    <p contenteditable="false">When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or mentoring aspiring developers.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="edit-panel" id="about-edit-panel">
+            <h3>Edit About Content</h3>
+            <input type="text" id="about-title" placeholder="Title">
+            <textarea id="about-description1" placeholder="Description Paragraph 1"></textarea>
+            <textarea id="about-description2" placeholder="Description Paragraph 2"></textarea>
+            <textarea id="about-description3" placeholder="Description Paragraph 3"></textarea>
+            <div class="btn-group">
+                <button class="save-btn" data-section="about">Save</button>
+                <button class="cancel-btn" data-section="about">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="education"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="container">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <button class="delete-btn" data-section="education" data-index="0" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="timeline-content">
+                        <h3 contenteditable="false">Master's in Computer Science</h3>
+                        <p contenteditable="false">University of London</p>
+                        <p contenteditable="false">2018 - 2020</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <button class="delete-btn" data-section="education" data-index="1" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="timeline-content">
+                        <h3 contenteditable="false">Bachelor's in Web Development</h3>
+                        <p contenteditable="false">London Tech Institute</p>
+                        <p contenteditable="false">2014 - 2018</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <button class="delete-btn" data-section="education" data-index="2" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="timeline-content">
+                        <h3 contenteditable="false">Advanced Diploma in UI/UX Design</h3>
+                        <p contenteditable="false">Design Academy London</p>
+                        <p contenteditable="false">2016 - 2017</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="add-item-btn" data-section="education" style="display: none;">+ Add Education</button>
+        </div>
+        
+        <div class="edit-panel" id="education-add-panel">
+            <h3>Add New Education</h3>
+            <input type="text" id="edu-title" placeholder="Degree/Program">
+            <input type="text" id="edu-institution" placeholder="Institution">
+            <input type="text" id="edu-period" placeholder="Period (e.g., 2018-2020)">
+            <div class="btn-group">
+                <button class="save-btn" id="add-education-item">Add</button>
+                <button class="cancel-btn" id="cancel-education-add">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="projects"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <button class="delete-btn" data-section="projects" data-index="0" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400?text=Project+1" alt="E-commerce Platform">
+                        <div class="image-upload">
+                            <input type="file" class="project-image-upload" data-index="0" accept="image/*">
+                            <label class="image-upload-label" style="display: none;">
+                                <i class="fas fa-camera"></i> Change Image
+                            </label>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 contenteditable="false">E-commerce Platform</h3>
+                        <p contenteditable="false">A full-featured online store with payment integration, product management, and user accounts.</p>
+                        <div class="project-links">
+                            <a href="#" class="github-link" contenteditable="false"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-link" contenteditable="false"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <button class="delete-btn" data-section="projects" data-index="1" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400?text=Project+2" alt="Task Management App">
+                        <div class="image-upload">
+                            <input type="file" class="project-image-upload" data-index="1" accept="image/*">
+                            <label class="image-upload-label" style="display: none;">
+                                <i class="fas fa-camera"></i> Change Image
+                            </label>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 contenteditable="false">Task Management App</h3>
+                        <p contenteditable="false">A productivity application for teams to collaborate and manage projects efficiently.</p>
+                        <div class="project-links">
+                            <a href="#" class="github-link" contenteditable="false"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-link" contenteditable="false"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <button class="delete-btn" data-section="projects" data-index="2" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="project-img">
+                        <img src="https://via.placeholder.com/600x400?text=Project+3" alt="Portfolio Template">
+                        <div class="image-upload">
+                            <input type="file" class="project-image-upload" data-index="2" accept="image/*">
+                            <label class="image-upload-label" style="display: none;">
+                                <i class="fas fa-camera"></i> Change Image
+                            </label>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 contenteditable="false">Portfolio Template</h3>
+                        <p contenteditable="false">A responsive portfolio template for creatives and developers to showcase their work.</p>
+                        <div class="project-links">
+                            <a href="#" class="github-link" contenteditable="false"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="live-demo-link" contenteditable="false"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="add-item-btn" data-section="projects" style="display: none;">+ Add Project</button>
+        </div>
+        
+        <div class="edit-panel" id="projects-add-panel">
+            <h3>Add New Project</h3>
+            <input type="text" id="project-title" placeholder="Project Title">
+            <textarea id="project-description" placeholder="Project Description"></textarea>
+            <input type="text" id="project-github" placeholder="GitHub Link (optional)">
+            <input type="text" id="project-livedemo" placeholder="Live Demo Link (optional)">
+            <div class="image-upload">
+                <input type="file" id="project-image-add" accept="image/*">
+                <label for="project-image-add" class="image-upload-label">
+                    <i class="fas fa-camera"></i> Upload Image
+                </label>
+                <span id="project-image-filename"></span>
+            </div>
+            <div class="btn-group">
+                <button class="save-btn" id="add-project-item">Add</button>
+                <button class="cancel-btn" id="cancel-project-add">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="skills"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-item" contenteditable="false">HTML5</div>
+                <div class="skill-item" contenteditable="false">CSS3</div>
+                <div class="skill-item" contenteditable="false">JavaScript</div>
+                <div class="skill-item" contenteditable="false">React</div>
+                <div class="skill-item" contenteditable="false">Node.js</div>
+                <div class="skill-item" contenteditable="false">Python</div>
+                <div class="skill-item" contenteditable="false">UI/UX Design</div>
+                <div class="skill-item" contenteditable="false">Responsive Design</div>
+            </div>
+            <button class="add-item-btn" data-section="skills" style="display: none;">+ Add Skill</button>
+        </div>
+
+        <div class="edit-panel" id="skills-add-panel">
+            <h3>Add New Skill</h3>
+            <input type="text" id="skill-name" placeholder="Skill Name">
+            <div class="btn-group">
+                <button class="save-btn" id="add-skill-item">Add</button>
+                <button class="cancel-btn" id="cancel-skill-add">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="achievements"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="container">
+            <h2>Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <button class="delete-btn" data-section="achievements" data-index="0" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="achievement-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 contenteditable="false">Top Performer Award</h3>
+                    <p contenteditable="false">Recognized as the top web developer for Q2 2023 at Frenify.</p>
+                </div>
+                <div class="achievement-card">
+                    <button class="delete-btn" data-section="achievements" data-index="1" style="display: none;"><i class="fas fa-times"></i></button>
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 contenteditable="false">Hackathon Winner</h3>
+                    <p contenteditable="false">Led a team to win first place in the annual London Tech Hackathon 2022.</p>
+                </div>
+                <div class="achievement-card">
+                    <button class="delete-btn" data-section="achievements" data-index="2" style="display: none;"><i class="fas fa-users"></i></button>
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 contenteditable="false">Community Contributor</h3>
+                    <p contenteditable="false">Active contributor to several open-source web development projects on GitHub.</p>
+                </div>
+            </div>
+            <button class="add-item-btn" data-section="achievements" style="display: none;">+ Add Achievement</button>
+        </div>
+
+        <div class="edit-panel" id="achievements-add-panel">
+            <h3>Add New Achievement</h3>
+            <input type="text" id="achievement-title" placeholder="Achievement Title">
+            <textarea id="achievement-description" placeholder="Achievement Description"></textarea>
+            <input type="text" id="achievement-icon" placeholder="Font Awesome Icon Class (e.g., fas fa-star)">
+            <div class="btn-group">
+                <button class="save-btn" id="add-achievement-item">Add</button>
+                <button class="cancel-btn" id="cancel-achievement-add">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="certifications"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certifications-list">
+                <div class="certification-item">
+                    <button class="delete-btn" data-section="certifications" data-index="0" style="display: none;"><i class="fas fa-times"></i></button>
+                    <h3 contenteditable="false">Certified JavaScript Developer</h3>
+                    <p contenteditable="false">Issued by: Codecademy | Date: June 2021</p>
+                </div>
+                <div class="certification-item">
+                    <button class="delete-btn" data-section="certifications" data-index="1" style="display: none;"><i class="fas fa-times"></i></button>
+                    <h3 contenteditable="false">Google UX Design Professional Certificate</h3>
+                    <p contenteditable="false">Issued by: Coursera | Date: March 2022</p>
+                </div>
+            </div>
+            <button class="add-item-btn" data-section="certifications" style="display: none;">+ Add Certification</button>
+        </div>
+
+        <div class="edit-panel" id="certifications-add-panel">
+            <h3>Add New Certification</h3>
+            <input type="text" id="cert-title" placeholder="Certification Title">
+            <input type="text" id="cert-issuer-date" placeholder="Issued by: [Issuer] | Date: [Month Year]">
+            <div class="btn-group">
+                <button class="save-btn" id="add-certification-item">Add</button>
+                <button class="cancel-btn" id="cancel-certification-add">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="edit-controls" style="display: none;">
+            <button class="edit-btn" data-section="contact"><i class="fas fa-edit"></i></button>
+        </div>
+        
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p contenteditable="false">Feel free to reach out if you have a project in mind, a question, or just want to connect!</p>
+            <div class="social-links">
+                <a href="#" class="social-link" contenteditable="false"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link" contenteditable="false"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" contenteditable="false"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link" contenteditable="false"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="contact-info">
+                <p contenteditable="false">Email: rewall@example.com</p>
+                <p contenteditable="false">Phone: +1 (123) 456-7890</p>
+                <p contenteditable="false">Location: London, UK</p>
+            </div>
+        </div>
+
+        <div class="edit-panel" id="contact-edit-panel">
+            <h3>Edit Contact Content</h3>
+            <textarea id="contact-intro" placeholder="Intro Text"></textarea>
+            <input type="text" id="contact-linkedin" placeholder="LinkedIn URL">
+            <input type="text" id="contact-github" placeholder="GitHub URL">
+            <input type="text" id="contact-twitter" placeholder="Twitter URL">
+            <input type="text" id="contact-email-link" placeholder="Email Link (mailto:...)">
+            <input type="text" id="contact-email-text" placeholder="Display Email Text">
+            <input type="text" id="contact-phone" placeholder="Phone Number">
+            <input type="text" id="contact-location" placeholder="Location">
+            <div class="btn-group">
+                <button class="save-btn" data-section="contact">Save</button>
+                <button class="cancel-btn" data-section="contact">Cancel</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" contenteditable="false">
+            <p>&copy; 2025 REWALL. All rights reserved.</p>
+        </div>
+        <div class="edit-panel" id="footer-edit-panel">
+            <h3>Edit Footer Content</h3>
+            <textarea id="footer-text" placeholder="Footer Text"></textarea>
+            <div class="btn-group">
+                <button class="save-btn" data-section="footer">Save</button>
+                <button class="cancel-btn" data-section="footer">Cancel</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const adminToggle = document.getElementById('admin-toggle');
+        const adminStatus = document.getElementById('admin-status');
+        const downloadHtmlBtn = document.getElementById('download-html');
+        let adminMode = false;
+
+        const editControls = document.querySelectorAll('.edit-controls');
+        const editPanels = document.querySelectorAll('.edit-panel');
+        const addItemsButtons = document.querySelectorAll('.add-item-btn');
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        const contentEditableElements = document.querySelectorAll('[contenteditable]');
+        const imageUploadLabels = document.querySelectorAll('.image-upload-label');
+
+        // Toggle Admin Mode
+        adminToggle.addEventListener('click', () => {
+            adminMode = !adminMode;
+            adminStatus.textContent = adminMode ? 'ON' : 'OFF';
+
+            editControls.forEach(control => {
+                control.style.display = adminMode ? 'flex' : 'none';
+            });
+
+            addItemsButtons.forEach(button => {
+                button.style.display = adminMode ? 'block' : 'none';
+            });
+
+            deleteButtons.forEach(button => {
+                button.style.display = adminMode ? 'flex' : 'none';
+            });
+
+            imageUploadLabels.forEach(label => {
+                label.style.display = adminMode ? 'block' : 'none';
+            });
+            
+            downloadHtmlBtn.style.display = adminMode ? 'inline-block' : 'none';
+
+            contentEditableElements.forEach(element => {
+                element.contentEditable = adminMode;
+            });
+
+            if (!adminMode) {
+                editPanels.forEach(panel => panel.classList.remove('active'));
+            }
+        });
+
+        // Open Edit Panels
+        editControls.forEach(control => {
+            control.querySelector('.edit-btn').addEventListener('click', (e) => {
+                const section = e.currentTarget.dataset.section;
+                const panel = document.getElementById(`${section}-edit-panel`);
+                if (panel) {
+                    editPanels.forEach(p => p.classList.remove('active')); // Close others
+                    panel.classList.add('active');
+                    populateEditPanel(section);
+                }
+            });
+        });
+
+        // Close Edit Panels
+        document.querySelectorAll('.edit-panel .cancel-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.currentTarget.closest('.edit-panel').classList.remove('active');
+            });
+        });
+
+        // Save Content Changes
+        document.querySelectorAll('.edit-panel .save-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const section = e.currentTarget.dataset.section;
+                saveContent(section);
+                e.currentTarget.closest('.edit-panel').classList.remove('active');
+            });
+        });
+
+        function populateEditPanel(section) {
+            const panel = document.getElementById(`${section}-edit-panel`);
+            if (!panel) return;
+
+            if (section === 'home') {
+                panel.querySelector('#home-title').value = document.querySelector('#home h1').textContent;
+                panel.querySelector('#home-description').value = document.querySelector('#home p').textContent;
+            } else if (section === 'about') {
+                panel.querySelector('#about-title').value = document.querySelector('#about h3').textContent;
+                const paragraphs = document.querySelectorAll('#about .about-text p');
+                panel.querySelector('#about-description1').value = paragraphs[0] ? paragraphs[0].textContent : '';
+                panel.querySelector('#about-description2').value = paragraphs[1] ? paragraphs[1].textContent : '';
+                panel.querySelector('#about-description3').value = paragraphs[2] ? paragraphs[2].textContent : '';
+            } else if (section === 'contact') {
+                const contactParagraphs = document.querySelectorAll('#contact p');
+                panel.querySelector('#contact-intro').value = contactParagraphs[0] ? contactParagraphs[0].textContent : '';
+                const socialLinks = document.querySelectorAll('#contact .social-link');
+                panel.querySelector('#contact-linkedin').value = socialLinks[0] ? socialLinks[0].getAttribute('href') : '';
+                panel.querySelector('#contact-github').value = socialLinks[1] ? socialLinks[1].getAttribute('href') : '';
+                panel.querySelector('#contact-twitter').value = socialLinks[2] ? socialLinks[2].getAttribute('href') : '';
+                
+                const emailLink = socialLinks[3];
+                if (emailLink) {
+                    panel.querySelector('#contact-email-link').value = emailLink.getAttribute('href');
+                } else {
+                    panel.querySelector('#contact-email-link').value = '';
+                }
+
+                const contactInfoParagraphs = document.querySelectorAll('#contact .contact-info p');
+                panel.querySelector('#contact-email-text').value = contactInfoParagraphs[0] ? contactInfoParagraphs[0].textContent : '';
+                panel.querySelector('#contact-phone').value = contactInfoParagraphs[1] ? contactInfoParagraphs[1].textContent : '';
+                panel.querySelector('#contact-location').value = contactInfoParagraphs[2] ? contactInfoParagraphs[2].textContent : '';
+            } else if (section === 'footer') {
+                panel.querySelector('#footer-text').value = document.querySelector('footer .container p').textContent;
+            }
+            // Add more sections here as needed for editing
+        }
+
+        function saveContent(section) {
+            const panel = document.getElementById(`${section}-edit-panel`);
+            if (!panel) return;
+
+            if (section === 'home') {
+                document.querySelector('#home h1').textContent = panel.querySelector('#home-title').value;
+                document.querySelector('#home p').textContent = panel.querySelector('#home-description').value;
+            } else if (section === 'about') {
+                document.querySelector('#about h3').textContent = panel.querySelector('#about-title').value;
+                const paragraphs = document.querySelectorAll('#about .about-text p');
+                if (paragraphs[0]) paragraphs[0].textContent = panel.querySelector('#about-description1').value;
+                if (paragraphs[1]) paragraphs[1].textContent = panel.querySelector('#about-description2').value;
+                if (paragraphs[2]) paragraphs[2].textContent = panel.querySelector('#about-description3').value;
+            } else if (section === 'contact') {
+                const contactParagraphs = document.querySelectorAll('#contact p');
+                if (contactParagraphs[0]) contactParagraphs[0].textContent = panel.querySelector('#contact-intro').value;
+                
+                const socialLinks = document.querySelectorAll('#contact .social-link');
+                if (socialLinks[0]) socialLinks[0].setAttribute('href', panel.querySelector('#contact-linkedin').value);
+                if (socialLinks[1]) socialLinks[1].setAttribute('href', panel.querySelector('#contact-github').value);
+                if (socialLinks[2]) socialLinks[2].setAttribute('href', panel.querySelector('#contact-twitter').value);
+
+                const emailLink = socialLinks[3];
+                if (emailLink) {
+                    emailLink.setAttribute('href', panel.querySelector('#contact-email-link').value);
+                }
+
+                const contactInfoParagraphs = document.querySelectorAll('#contact .contact-info p');
+                if (contactInfoParagraphs[0]) contactInfoParagraphs[0].textContent = panel.querySelector('#contact-email-text').value;
+                if (contactInfoParagraphs[1]) contactInfoParagraphs[1].textContent = panel.querySelector('#contact-phone').value;
+                if (contactInfoParagraphs[2]) contactInfoParagraphs[2].textContent = panel.querySelector('#contact-location').value;
+
+            } else if (section === 'footer') {
+                document.querySelector('footer .container p').textContent = panel.querySelector('#footer-text').value;
+            }
+            // Add more sections here for saving edited content
+        }
+
+        // Image Upload Handlers
+        document.getElementById('profile-image-upload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-image').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.querySelectorAll('.project-image-upload').forEach((input, index) => {
+            input.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        input.closest('.project-img').querySelector('img').src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Dynamic Item Add/Delete Logic
+
+        // General function to handle adding items
+        addItemsButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const section = e.currentTarget.dataset.section;
+                const addPanel = document.getElementById(`${section}-add-panel`);
+                if (addPanel) {
+                    editPanels.forEach(p => p.classList.remove('active')); // Close other panels
+                    addPanel.classList.add('active');
+                }
+            });
+        });
+
+        // Cancel Add Item
+        document.querySelectorAll('.edit-panel .cancel-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.currentTarget.closest('.edit-panel').classList.remove('active');
+            });
+        });
+
+        // Add Education Item
+        document.getElementById('add-education-item').addEventListener('click', () => {
+            const title = document.getElementById('edu-title').value;
+            const institution = document.getElementById('edu-institution').value;
+            const period = document.getElementById('edu-period').value;
+
+            if (title && institution && period) {
+                const timeline = document.querySelector('#education .timeline');
+                const newItem = document.createElement('div');
+                const isLeft = timeline.children.length % 2 === 0 ? 'left' : 'right'; // Alternate left/right
+                newItem.classList.add('timeline-item', isLeft);
+                newItem.innerHTML = `
+                    <button class="delete-btn" data-section="education" style="display: flex;"><i class="fas fa-times"></i></button>
+                    <div class="timeline-content">
+                        <h3 contenteditable="true">${title}</h3>
+                        <p contenteditable="true">${institution}</p>
+                        <p contenteditable="true">${period}</p>
+                    </div>
+                `;
+                timeline.appendChild(newItem);
+
+                // Re-attach delete listener to new button
+                newItem.querySelector('.delete-btn').addEventListener('click', handleDeleteItem);
+
+                // Clear form and close panel
+                document.getElementById('edu-title').value = '';
+                document.getElementById('edu-institution').value = '';
+                document.getElementById('edu-period').value = '';
+                document.getElementById('education-add-panel').classList.remove('active');
+            } else {
+                alert('Please fill all education fields.');
+            }
+        });
+
+        // Add Project Item
+        document.getElementById('add-project-item').addEventListener('click', () => {
+            const title = document.getElementById('project-title').value;
+            const description = document.getElementById('project-description').value;
+            const github = document.getElementById('project-github').value;
+            const livedemo = document.getElementById('project-livedemo').value;
+            const imageFile = document.getElementById('project-image-add').files[0];
+
+            if (title && description) {
+                const projectsGrid = document.querySelector('#projects .projects-grid');
+                const newCard = document.createElement('div');
+                newCard.classList.add('project-card');
+
+                let imgSrc = 'https://via.placeholder.com/600x400?text=New+Project'; // Default placeholder
+
+                if (imageFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imgSrc = e.target.result;
+                        renderProjectCard();
+                    }
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    renderProjectCard();
+                }
+
+                function renderProjectCard() {
+                    newCard.innerHTML = `
+                        <button class="delete-btn" data-section="projects" style="display: flex;"><i class="fas fa-times"></i></button>
+                        <div class="project-img">
+                            <img src="${imgSrc}" alt="${title}">
+                            <div class="image-upload">
+                                <input type="file" class="project-image-upload" accept="image/*">
+                                <label class="image-upload-label" style="display: block;">
+                                    <i class="fas fa-camera"></i> Change Image
+                                </label>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 contenteditable="true">${title}</h3>
+                            <p contenteditable="true">${description}</p>
+                            <div class="project-links">
+                                <a href="${github || '#'}" class="github-link" contenteditable="true"><i class="fab fa-github"></i> Code</a>
+                                <a href="${livedemo || '#'}" class="live-demo-link" contenteditable="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    `;
+                    projectsGrid.appendChild(newCard);
+
+                    // Re-attach listeners for new elements
+                    newCard.querySelector('.delete-btn').addEventListener('click', handleDeleteItem);
+                    newCard.querySelector('.project-image-upload').addEventListener('change', function(event) {
+                        const file = event.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                event.target.closest('.project-img').querySelector('img').src = e.target.result;
+                            }
+                            reader.readAsDataURL(file);
+                        }
+                    });
+
+                    // Clear form and close panel
+                    document.getElementById('project-title').value = '';
+                    document.getElementById('project-description').value = '';
+                    document.getElementById('project-github').value = '';
+                    document.getElementById('project-livedemo').value = '';
+                    document.getElementById('project-image-add').value = ''; // Clear file input
+                    document.getElementById('project-image-filename').textContent = '';
+                    document.getElementById('projects-add-panel').classList.remove('active');
+                }
+            } else {
+                alert('Please fill project title and description.');
+            }
+        });
+
+        // Add Skill Item
+        document.getElementById('add-skill-item').addEventListener('click', () => {
+            const skillName = document.getElementById('skill-name').value;
+            if (skillName) {
+                const skillsContainer = document.querySelector('#skills .skills-container');
+                const newItem = document.createElement('div');
+                newItem.classList.add('skill-item');
+                newItem.setAttribute('contenteditable', 'true');
+                newItem.textContent = skillName;
+
+                // Create and append the delete button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.classList.add('delete-btn');
+                deleteBtn.setAttribute('data-section', 'skills');
+                deleteBtn.style.display = 'flex';
+                deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
+                newItem.appendChild(deleteBtn);
+                
+                skillsContainer.appendChild(newItem);
+
+                // Re-attach delete listener
+                deleteBtn.addEventListener('click', handleDeleteItem);
+
+                document.getElementById('skill-name').value = '';
+                document.getElementById('skills-add-panel').classList.remove('active');
+            } else {
+                alert('Please enter a skill name.');
+            }
+        });
+
+        // Add Achievement Item
+        document.getElementById('add-achievement-item').addEventListener('click', () => {
+            const title = document.getElementById('achievement-title').value;
+            const description = document.getElementById('achievement-description').value;
+            const icon = document.getElementById('achievement-icon').value;
+
+            if (title && description && icon) {
+                const achievementsGrid = document.querySelector('#achievements .achievements-grid');
+                const newCard = document.createElement('div');
+                newCard.classList.add('achievement-card');
+                newCard.innerHTML = `
+                    <button class="delete-btn" data-section="achievements" style="display: flex;"><i class="fas fa-times"></i></button>
+                    <div class="achievement-icon">
+                        <i class="${icon}"></i>
+                    </div>
+                    <h3 contenteditable="true">${title}</h3>
+                    <p contenteditable="true">${description}</p>
+                `;
+                achievementsGrid.appendChild(newCard);
+
+                // Re-attach delete listener
+                newCard.querySelector('.delete-btn').addEventListener('click', handleDeleteItem);
+
+                document.getElementById('achievement-title').value = '';
+                document.getElementById('achievement-description').value = '';
+                document.getElementById('achievement-icon').value = '';
+                document.getElementById('achievements-add-panel').classList.remove('active');
+            } else {
+                alert('Please fill all achievement fields.');
+            }
+        });
+
+        // Add Certification Item
+        document.getElementById('add-certification-item').addEventListener('click', () => {
+            const title = document.getElementById('cert-title').value;
+            const issuerDate = document.getElementById('cert-issuer-date').value;
+
+            if (title && issuerDate) {
+                const certificationsList = document.querySelector('#certifications .certifications-list');
+                const newItem = document.createElement('div');
+                newItem.classList.add('certification-item');
+                newItem.innerHTML = `
+                    <button class="delete-btn" data-section="certifications" style="display: flex;"><i class="fas fa-times"></i></button>
+                    <h3 contenteditable="true">${title}</h3>
+                    <p contenteditable="true">${issuerDate}</p>
+                `;
+                certificationsList.appendChild(newItem);
+
+                // Re-attach delete listener
+                newItem.querySelector('.delete-btn').addEventListener('click', handleDeleteItem);
+
+                document.getElementById('cert-title').value = '';
+                document.getElementById('cert-issuer-date').value = '';
+                document.getElementById('certifications-add-panel').classList.remove('active');
+            } else {
+                alert('Please fill all certification fields.');
+            }
+        });
+
+
+        // Handle Delete Item
+        function handleDeleteItem(e) {
+            if (adminMode) {
+                const itemToRemove = e.currentTarget.closest('.timeline-item, .project-card, .skill-item, .achievement-card, .certification-item');
+                if (itemToRemove && confirm('Are you sure you want to delete this item?')) {
+                    itemToRemove.remove();
+                }
+            }
+        }
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', handleDeleteItem);
+        });
+
+        // Update filename for project image add panel
+        document.getElementById('project-image-add').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : '';
+            document.getElementById('project-image-filename').textContent = fileName ? `Selected: ${fileName}` : '';
+        });
+        
+        // Download HTML functionality
+        downloadHtmlBtn.addEventListener('click', () => {
+            // Temporarily hide admin controls and contenteditable attributes for clean download
+            const tempEditControls = document.querySelectorAll('.edit-controls');
+            const tempAddButtons = document.querySelectorAll('.add-item-btn');
+            const tempDeleteButtons = document.querySelectorAll('.delete-btn');
+            const tempEditPanels = document.querySelectorAll('.edit-panel');
+            const tempImageUploadLabels = document.querySelectorAll('.image-upload-label');
+            const tempAdminModeBar = document.querySelector('.admin-mode');
+            const tempDownloadBtn = document.getElementById('download-html');
+
+            tempEditControls.forEach(el => el.style.display = 'none');
+            tempAddButtons.forEach(el => el.style.display = 'none');
+            tempDeleteButtons.forEach(el => el.style.display = 'none');
+            tempEditPanels.forEach(el => el.classList.remove('active'));
+            tempImageUploadLabels.forEach(el => el.style.display = 'none');
+            if (tempAdminModeBar) tempAdminModeBar.style.display = 'none'; // Hide the whole admin bar
+            if (tempDownloadBtn) tempDownloadBtn.style.display = 'none';
+
+            contentEditableElements.forEach(element => {
+                element.removeAttribute('contenteditable');
+            });
+
+            // Get the entire HTML content
+            const htmlContent = document.documentElement.outerHTML;
+
+            // Restore visibility of admin controls and contenteditable attributes
+            tempEditControls.forEach(el => el.style.display = adminMode ? 'flex' : 'none');
+            tempAddButtons.forEach(el => el.style.display = adminMode ? 'block' : 'none');
+            tempDeleteButtons.forEach(el => el.style.display = adminMode ? 'flex' : 'none');
+            tempImageUploadLabels.forEach(el => el.style.display = adminMode ? 'block' : 'none');
+            if (tempAdminModeBar) tempAdminModeBar.style.display = 'flex'; // Show the admin bar again
+            if (tempDownloadBtn) tempDownloadBtn.style.display = adminMode ? 'inline-block' : 'none';
+
+            contentEditableElements.forEach(element => {
+                if (adminMode) {
+                    element.setAttribute('contenteditable', 'true');
+                }
+            });
+
+            // Create a Blob from the HTML content
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+
+            // Create a temporary anchor element and trigger download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'my-portfolio.html'; // Default filename
+            document.body.appendChild(a);
+            a.click();
+
+            // Clean up
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+    </script>
+</body>
+</html>
